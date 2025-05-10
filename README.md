@@ -1,142 +1,118 @@
-# UAV-Strategic-Deconfliction-in-Shared-Airspace
-UAV Strategic Deconfliction System for the FlytBase Robotics Assignment 2025. This project verifies the safety of drone waypoint missions in shared airspace by detecting spatial and temporal conflicts with other drones. Includes 4D path simulation, conflict reporting, 3D animation, JSON input support, and scalability discussion.
+# 🚁 UAV Strategic Deconfliction System
+
+A simulation-based system to manage **strategic deconfliction** for multiple UAVs operating in shared airspace. This project is part of the **FlytBase Robotics Assignment 2025**.
+
+---
+
+## 📌 Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [System Design](#system-design)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Sample Output](#sample-output)
+- [Future Improvements](#future-improvements)
+- [License](#license)
+
+---
+
+## 📝 Overview
+
+This project simulates a **pre-flight deconfliction system** that assigns safe, non-overlapping flight paths to multiple UAVs. It ensures strategic separation to avoid mid-air conflicts in a shared 3D airspace.
+
+---
+
+## 🚀 Features
+
+- 3D grid-based airspace modeling
+- Pre-flight conflict detection and resolution
+- Path planning using A* / Dijkstra algorithms
+- Priority-based rerouting
+- Console-based or GUI visualization (optional)
+
+---
+
+## 🧠 System Design
+
+```text
++--------------+       +------------------+       +------------------+
+| Input Parser | --->  | Conflict Checker | --->  | Path Replanner   |
++--------------+       +------------------+       +------------------+
+                           |
+                    +----------------+
+                    | Path Allocator |
+                    +----------------+
+                           |
+                     [Updated Flight Plans]
+
+---
 
 
+🛠️ Technologies Used
 
-📌 Features
+Language: Python 3.10+
 
+Algorithms: A*, Dijkstra, BFS (based on implementation)
 
-✅ Spatial and temporal conflict detection using 4D data (x, y, z, time)
+Libraries:
 
-✅ Conflict explanation with location, time, and conflicting drone ID
+numpy, matplotlib (optional for visualization)
 
-✅ Animated 3D simulation using matplotlib
+networkx (for graph-based path planning)
 
-✅ Conflict trails and visual conflict markers
+tkinter or pygame (if GUI used)
 
-✅ External mission input via JSON file
+⚙️ Installation
 
-✅ Optional: export animation as MP4
+# Clone the repository
+git clone https://github.com/your-username/uav-deconfliction-system.git
+cd uav-deconfliction-system
 
-📁 File Structure
-project_root/
+# (Optional) Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
+# Install dependencies
+pip install -r requirements.txt
 
-│
-   ├── uav_deconfliction_4d.py        # Main script
+🧪 Usage
 
-   
-       ├── utils.py                       # JSON loader function (if separated)
+# Run the simulator
+python main.py --input data/input.json --output data/output.json
 
-       
-           ├── missions.json                  # Input file with drone waypoints
+Arguments:
 
-           
-              ├── test_conflicts.py              # Optional unit tests
+--input: JSON file containing UAV flight plans
 
-              
-                  ├── README.md                      # This file
+--output: JSON file with deconflicted flight plans
 
-                  
-                    ├── requirements.txt               # Dependencies
-
-                    
-                        └── demo.mp4                       # Optional exported animation video
-
-
-
-🚀 How to Run
-
-1.Install dependencies:
-pip install matplotlib numpy
-
-2.Ensure missions.json is present with proper structure.
-
-Run the script:
-python uav_deconfliction_4d.py
-
-📂 Sample missions.json
+📊 Sample Output
 
 {
-  "primary": {
-
-    "id": "Primary",
-    
-    "waypoints": [
-      
-      { "x": 0, "y": 0, "z": 0, "time": 0 },
-     
-      { "x": 10, "y": 10, "z": 10, "time": 10 },
-      
-      { "x": 20, "y": 10, "z": 20, "time": 20 }
-   
-    ]
- 
-  },
-  
-  "simulated": [
- 
-    {
-     
-      "id": "Sim1",
-    
-      "waypoints": [
-     
-        { "x": 10, "y": 0, "z": 0, "time": 5 },
-     
-        { "x": 10, "y": 20, "z": 20, "time": 15 }
-   
-      ]
-      
-    },
-   
-    {
-    
-      "id": "Sim2",
-     
-      "waypoints": [
-       
-        { "x": 25, "y": 10, "z": 15, "time": 18 },
-      
-        { "x": 0, "y": 10, "z": 15, "time": 25 }
-    
-      ]
-  
-    }
-  
-  ]
-
+  "uav_id": "UAV_001",
+  "original_path": [...],
+  "revised_path": [...],
+  "status": "rerouted"
 }
 
-✅ Deliverables
-
-
-📁 Full Python implementation
-
-📝 Reflection & Design Document
-
-🎞️ Demo video with voiceover (3–5 mins)
-
-📊 3D animated visualization with time and conflict highlights
-
-🔬 Testing
-To run optional unit tests:
-python test_conflicts.py
-
-🧠 Scalability
-For real-world implementation:
-
-Stream processing with Apache Kafka or Flink
-
-Spatial-temporal indexing using KD-Trees or Octrees
-
-Use of TimescaleDB or similar for time-aware querying
-
-Real-time ingestion pipelines and fault tolerance mechanisms
 
 
 
-![Screenshot 2025-05-10 204538](https://github.com/user-attachments/assets/4d57f10c-df63-4e80-a804-a1f1098de7bf)
+🧩 Future Improvements
+
+Real-time (tactical) deconfliction support
+
+Integration with FlytBase APIs
+
+Dynamic obstacle avoidance
+
+GUI-based 3D visualization
+
+📄 License
+This project is licensed under the MIT License.
+
 
 
 
@@ -146,7 +122,5 @@ Real-time ingestion pipelines and fault tolerance mechanisms
 
 
 👤 Author
-
-
 
 Ninad Metkar
