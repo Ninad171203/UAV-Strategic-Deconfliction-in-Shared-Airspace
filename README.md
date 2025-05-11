@@ -18,7 +18,7 @@ A simulation-based system to manage **strategic deconfliction** for multiple UAV
 
 project_root/
              
-             ├── uav_deconfliction_4d.py        # Main script
+             ├── final_model_run_case.py        # Main script
                  
                  ├── utils.py                       # JSON loader function (if separated)
                      
