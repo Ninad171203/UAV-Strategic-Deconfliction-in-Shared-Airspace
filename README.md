@@ -43,7 +43,7 @@ pip install matplotlib numpy
 
 3.Run the script:
 
-python uav_deconfliction_4d.py
+python final model run case.py
 
 4.Optional: Export as MP4 (uncomment the writer block in the script).
 
