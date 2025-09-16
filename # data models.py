@@ -15,4 +15,4 @@ class Waypoint:
 @dataclass
 class DroneMission:
     id: str
-    waypoints: list  # List[Waypoinnt]
+    waypoints: list  # List[Waypoint]
